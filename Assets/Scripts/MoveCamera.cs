@@ -14,6 +14,7 @@ public class MoveCamera : MonoBehaviour
     public int sceneCnt = 1;
     public AudioSource audioObj;
     public AudioClip[] audioSources;
+    public SettingWindow win;
 
     private void Start()
     {
@@ -40,7 +41,14 @@ public class MoveCamera : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow)) ChangeAudio(0, audioSources[0]);
             else if (Input.GetKey(KeyCode.RightArrow)) ChangeAudio(26f, audioSources[1]);
         }
-       
+
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            win.SettingBtnClick();
+        }
+
+
         Moving(transX);
 
     }

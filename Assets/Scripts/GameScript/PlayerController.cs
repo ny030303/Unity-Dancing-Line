@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Stop()
+    {
+        isRunning = false;
+    }
+
     public bool getIsRunning() { return isRunning; }
     public void setIsRunning()  {  isRunning = !isRunning; }
     public Vector3 getMoveDirection() {return moveDirection;}

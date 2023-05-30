@@ -11,6 +11,11 @@ public class SettingWindow : MonoBehaviour
     
     public void SettingBtnClick()
     {
+        Invoke("Show", .8f);
+    }
+
+    public void Show()
+    {
         settingWindow.SetActive(true);
     }
 
@@ -24,8 +29,16 @@ public class SettingWindow : MonoBehaviour
         Application.Quit();
     }
 
-    public void ResetBtnClick()
+    public void HomeClick()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("SelectScene");
     }
+
+    public void Restart()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        print(scene.name);
+        SceneManager.LoadScene(scene.name);
+    }
+
 }

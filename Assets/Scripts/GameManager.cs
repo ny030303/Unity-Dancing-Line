@@ -1,8 +1,5 @@
 using MidiPlayerTK;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +11,8 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
     private  AudioSource audioSource;
     MidiFilePlayer midiFilePlayer;
+    public SettingWindow[] windows;
+
     public static GameManager instance
     {
         get
@@ -27,6 +26,7 @@ public class GameManager : MonoBehaviour
 
             // ΩÃ±€≈Ê ø¿∫Í¡ß∆Æ∏¶ π›»Ø
             return m_instance;
+
         }
     }
 
@@ -79,7 +79,12 @@ public class GameManager : MonoBehaviour
                     lineController.rotatedEvent(playerController.getTransform(), playerController.getMoveDirection());
                 }
             }
-        }
+        } 
+        
+        //else if(Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    windows[2].SettingBtnClick();
+        //}
     }
 
     void gameStartSetting()
@@ -94,5 +99,15 @@ public class GameManager : MonoBehaviour
         isGameover = true;
         audioSource.Pause();
         playerController.Die();
+        windows[1].SettingBtnClick();
     }
+
+    public void GoalEvent()
+    {
+        audioSource.Pause();
+        playerController.Stop();
+        windows[0].SettingBtnClick();
+    }
+
+
 }
